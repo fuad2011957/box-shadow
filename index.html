@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./style/style.css">
+        <title>Box Shadow</title>
+    </head>
+    <body>
+
+        <div id="flash"></div>
+
+    
+        <div id="buttons">
+            <button id="play-music">
+                <span> Play music
+                </span>
+            </button>
+        </div>
+
+        <div class="app">
+            <div class="box"></div>
+            <div class="audio">
+                <audio id="background-music" src="./audio/LXST_CXNTURY_-_ODIUM_66374302.mp3" controls preload="auto"></audio> 
+            </div>
+        </div>
+        
+        <script>
+            const playMusic = document.getElementById('play-music');
+            const audio = document.getElementById('background-music');
+            const flash = document.getElementById('flash');
+            const app = document.querySelector('.app');
+            
+            // Включить музыку
+            playMusic.addEventListener('click', () => {
+                audio.play();
+                playMusic.style.display = 'none'; // Скрыть кнопку "Включить"
+            
+                // Включаем мигание
+                flash.style.display = 'block';
+            
+                // Усиливаем мигание через 12 секунд
+                setTimeout(() => {
+                    flash.style.animation = 'flash-animation-fast 0.2s infinite'; // Быстрое мигание
+                }, 12000); // 12 секунд
+            
+                // Останавливаем мигание через 15 секунд
+                setTimeout(() => {
+                    flash.style.display = 'none';
+            
+                    // Показываем основной контент
+                    app.style.display = 'flex';
+                }, 13700); // 15 секунд
+            });
+            </script>
+    </body>
+</html>
